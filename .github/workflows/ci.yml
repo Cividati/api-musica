@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main] 
+
+  workflow_dispatch:
+
+env:
+  apiKey: ${{ secrets.APIKEY }}
+  authDomain: ${{ secrets.AUTHDOMAIN }}
+  projectId: ${{ secrets.PROJECTID }}
+
+jobs:
+
+  build:
+  
+    runs-on: ubuntu-latest
+    environment: Development
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.1.0
+
+      - name: Install Packages
+        run: npm install 
+        
+      - name: Run Tests
+        run: npm run test 
+
+
