@@ -60,11 +60,11 @@ export class database {
     async delete(collection, document) {
         try {
             const docRef = await deleteDoc(doc(this.db, collection, document));
-            console.log("Document deleted with ID: ", document);
+            // console.log("Document deleted with ID: ", document);
             return true
 
         } catch(e) {
-            console.error("Error deleting document: ", e);
+            // console.error("Error deleting document: ", e);
             return false
         }
     }
